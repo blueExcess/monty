@@ -35,18 +35,40 @@ typedef struct stack_s
 typedef struct instruction_s
 {
         char *opcode;
-        void (*f)(stack_t **stack, unsigned int line_number);
+        int (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+/**
+ * struct instruction_s - opcode and its function
+ * @opcode: the opcode
+ * @f: function to handle the opcode
+ *
+ * Description: opcode and its function
+ * for stack, queues, LIFO, FIFO Holberton project
+ */
+typedef struct good_s
+{
+        char *opcode;
+        int (*f)(stack_t *stack, unsigned int line_number);
+} good_t;
 
+struct g
+{
+	stack_t *head;
+	stack_t *end;
+	int n;
+	int stack_size;
+	int line_num;
+	char *command;
+} g;
 
 /* PROTOTYPES */
 int invalid(int count, char *line, int n);
-
+void get_opcode(void);
 stack_t *push(stack_t **stack, int n);
-size_t pall(const stack_t *stack);
-
-
+int pall(stack_t *stack, unsigned int line_number);
+void free_stack(stack_t *stack);
+int pint(stack_t *stack, unsigned int line_number);
 
 
 
