@@ -7,7 +7,7 @@
  * @stack: position of stack
  * @n: value to push to stack
  *
- * Return: idk yet.
+ * Return: pointer to a new stack.
  */
 stack_t *push(stack_t **stack, int n)
 {
@@ -28,25 +28,45 @@ stack_t *push(stack_t **stack, int n)
 	else
 		new->next = NULL;
 	*stack = new;
+	g.stack_size++;
+	g.head = new;
 	return (new);
 }
 
 /**
  * pall - Print values on the stack, starting from the top
  * @stack: pointer to the stack
+ * @line_number: line number
  *
- * Return: the number of nodes
+ * Return: -1 for error, 0 for success
  */
-size_t pall(const stack_t *stack)
+int pall(stack_t *stack, unsigned int line_number)
 {
 	size_t ele;
 
+	(void)line_number;
 	if (stack == NULL)
-		return (0);
+		return (-1);
 	for (ele = 0; stack != NULL; ele++)
 	{
 		printf("%d\n", stack->n);
 		stack = stack->next;
 	}
-	return (ele);
+	return (0);
+}
+
+/**
+ * pint - prints top of stack
+ * @stack: stack to print from
+ * @line_number: line number
+ *
+ * Return: 0 on success, -1 on error
+ */
+int pint(stack_t *stack, unsigned int line_number)
+{
+	(void)line_number;
+	if (stack == NULL || g.stack_size == 0)
+		return (-1);
+	printf("%i\n", stack->n);
+	return (0);
 }
