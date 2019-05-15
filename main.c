@@ -31,15 +31,15 @@ int main(int ac, char **av)
 		if (scanned == 1 && strcmp(comm, push) == 0)
 		{
 			fclose(file);
-			/* Maybe free here instead of in function, not sure */
+                        /* Maybe free here instead of in function, not sure */
 			invalid(count, line, 2);
 		}
-			line = NULL;
+		/*line = NULL;*/
                 /* debug */
 		printf("%s %i\n", comm, value);
 	}
-	fclose(file);
 	free(line);
+	fclose(file);
 	return (0);
 }
 
