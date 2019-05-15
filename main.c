@@ -1,4 +1,6 @@
 /* main file for monty interpreter */
+#include <stdio.h>
+#include <string.h>
 #include "monty.h"
 
 /**
@@ -27,12 +29,17 @@ int main(int ac, char **av)
 		count++;
 		scanned = sscanf(line, "%s %i", comm, &value);
 		if (scanned == 1 && strcmp(comm, push) == 0)
+		{
+			fclose(file);
+			/* Maybe free here instead of in function, not sure */
 			invalid(count, line, 2);
-		line = NULL;
-		printf("%s %i\n", comm, value); // debug
-		free(line);
+		}
+			line = NULL;
+                /* debug */
+		printf("%s %i\n", comm, value);
 	}
 	fclose(file);
+	free(line);
 	return (0);
 }
 
@@ -61,5 +68,6 @@ int invalid(int count, char *line, int n)
 		fprintf(stderr, "Error: Can't open file %s\n", line);
 		break;
 	}
-	exit(EXIT_FAILURE)
+	free(line);
+	exit(EXIT_FAILURE);
 }
