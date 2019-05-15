@@ -13,31 +13,36 @@
 int main(int ac, char **av)
 {
 	FILE *file;
-	char *line = NULL, comm[10] = {'\0'}, *push = "push\0";
+	char *line = NULL, comm[10] = {'\0'};
 	ssize_t read = 0;
 	size_t bsize = 0, count = 0;
-	int value = 0, scanned = 0;
-
+	int value = 0, scanned = 0, n = 0;
+	stack_t *stack;
 
 	if (ac != 2)
 		invalid(count, NULL, 3);
 	file = fopen(av[1], "r");
 	if (!file)
 		invalid(count, av[1], 4);
+	stack = NULL;
 	while ((read = getline(&line, &bsize, file)) != -1)
 	{
 		count++;
 		scanned = sscanf(line, "%s %i", comm, &value);
-		if (scanned == 1 && strcmp(comm, push) == 0)
+		if (scanned == 1 && strcmp(comm, "push") == 0)
 		{
 			fclose(file);
                         /* Maybe free here instead of in function, not sure */
 			invalid(count, line, 2);
 		}
+		/*else
+		{
+		get_opcode(comm)*/
 		/*line = NULL;*/
-                /* debug */
-		printf("%s %i\n", comm, value);
+		push(&stack, value);
 	}
+	n = pall(stack);
+	printf("Number of nodes: %d\n", n);
 	free(line);
 	fclose(file);
 	return (0);

@@ -43,6 +43,8 @@ typedef struct instruction_s
 /* PROTOTYPES */
 int invalid(int count, char *line, int n);
 
+stack_t *push(stack_t **stack, int n);
+size_t pall(const stack_t *stack);
 
 
 
