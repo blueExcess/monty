@@ -1,7 +1,13 @@
 /* main file for monty interpreter */
 #include "monty.h"
 
-/* environment needed? */
+/**
+ * main - take input from files and parse then call opcodes
+ * @ac: number of arguments
+ * @av: list of arguments
+ *
+ * Return: 0 on success, 1 on failure
+ */
 int main(int ac, char **av)
 {
 	FILE *file;
@@ -12,16 +18,10 @@ int main(int ac, char **av)
 
 
 	if (ac != 2)
-	{
-		fprintf(stderr, "USAGE: monty file\n");
-		exit(EXIT_FAILURE);
-	}
+		invalid(count, NULL, 3);
 	file = fopen(av[1], "r");
 	if (!file)
-	{
-		fprintf(stderr, "Error: Can't open file %s\n", av[1]);
-		exit(EXIT_FAILURE);
-	}
+		invalid(count, av[1], 4);
 	while ((read = getline(&line, &bsize, file)) != -1)
 	{
 		count++;
@@ -29,12 +29,21 @@ int main(int ac, char **av)
 		if (scanned == 1 && strcmp(comm, push) == 0)
 			invalid(count, line, 2);
 		line = NULL;
-		printf("%s %i\n", comm, value);
+		printf("%s %i\n", comm, value); // debug
+		free(line);
 	}
+	fclose(file);
 	return (0);
 }
 
-
+/**
+ * invalid - error handling function
+ * @count: line count
+ * @line: current instruction (not parsed)
+ * @n: error code to run
+ *
+ * Return: 0 on success, 1 on failure
+ */
 int invalid(int count, char *line, int n)
 {
 	switch (n)
@@ -45,5 +54,12 @@ int invalid(int count, char *line, int n)
 	case 2:
 		fprintf(stderr, "L%d: usage: push integer\n", count);
 		break;
+	case 3:
+		fprintf(stderr, "USAGE: monty file\n");
+		break;
+	case 4:
+		fprintf(stderr, "Error: Can't open file %s\n", line);
+		break;
 	}
+	exit(EXIT_FAILURE)
 }
