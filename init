@@ -1,0 +1,8 @@
+	FILE *file;
+	char *line = NULL, comm[64] = {'\0'};
+	ssize_t read = 0;
+	size_t bsize = 0;
+	int value = 0, scanned = 0;
+	stack_t *stack;
+
+

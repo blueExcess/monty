@@ -12,13 +12,7 @@
  */
 int main(int ac, char **av)
 {
-	FILE *file;
-	char *line = NULL, comm[64] = {'\0'};
-	ssize_t read = 0;
-	size_t bsize = 0, count = 0;
-	int value = 0, scanned = 0;
-	stack_t *stack;
-
+#include "init"
 	if (ac != 2)
 		no_mem_invalid(NULL, 1);
 	file = fopen(av[1], "r");
@@ -29,21 +23,22 @@ int main(int ac, char **av)
 	g.head = stack;
 	while ((read = getline(&line, &bsize, file)) != -1)
 	{
-		count++;
-		g.line_num = count;
+		g.line_num++;
+		memset(comm, 0, 64);
 		scanned = sscanf(line, "%s %i", comm, &value);
 		g.command = comm;
 		g.line = line;
 		if (scanned != 2 && strcmp(comm, "push") == 0)
-		{
 			invalid(2);
-		}
+		if (strcmp(comm, "\0") == 0)
+			goto end;
 		if (strcmp(comm, "push") == 0)
 			push(&stack, value);
 		else if (strcmp(comm, "pop") == 0)
 			pop(&stack);
 		else
 			get_opcode();
+end:
 		stack = g.head;
 		free(line);
 		line = NULL;
