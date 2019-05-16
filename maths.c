@@ -91,7 +91,7 @@ int mul(stack_t *stack, unsigned int line_number)
  *
  * Return: prints result - 0 on success, 1 on fail
  */
-int add(stack_t *stack, unsigned int line_number)
+int div(stack_t *stack, unsigned int line_number)
 {
 	int a = 0, b = 0;
 	unsigned int ln = line_number;
