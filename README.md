@@ -48,3 +48,4 @@ What you should learn from this project:
 
 ## Author
 * **Nathan Petersen** - [blueExcess](https://github.com/blueExcess)
+* **Kyle Longgrass** - [klitscher](https://github.com/klitscher)
