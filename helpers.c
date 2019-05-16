@@ -10,17 +10,25 @@
  */
 void get_opcode(void)
 {
+	int i = 0;
+
 	good_t commands[] = {
-		{"pall", pall}, {"pint", pint}/*, {"swap", swap},
+		{"pall", pall}, {"pint", pint}, {"\0", NULL}/*, {"swap", swap},
 		{"add", add}, {"nop", nop}, {"sub", sub},
 		{"div", div}, {"mul", mul}, {"mod", mod},
 		{"pchar", pchar}, {"pstr", pstr}, {"rotl", rotl},
 		{"rotr", rotr}*/
 	};
-	if (strcmp(g.command, commands[1].opcode) == 0)
+	while (commands[i].f != NULL)
 	{
-		commands[1].f(g.head, g.line_num);
+		if (strcmp(g.command, commands[i].opcode) == 0)
+		{
+			commands[i].f(g.head, g.line_num);
+			return;
+		}
+		i++;
 	}
+	invalid(g.line_num, g.command, 1);
 }
 
 /**
