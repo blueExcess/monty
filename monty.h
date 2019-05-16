@@ -68,7 +68,8 @@ struct g
 
 
 /* PROTOTYPES */
-int invalid(int count, char *line, int n);
+int no_mem_invalid(char *line, int n);
+int invalid(int n);
 void get_opcode(void);
 stack_t *push(stack_t **stack, int n);
 int pall(stack_t *stack, unsigned int line_number);
