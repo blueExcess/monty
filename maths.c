@@ -16,9 +16,9 @@ int _add(stack_t *stack, unsigned int line_number)
 
 	if (g.stack_size >= 2)
 	{
-		a = pop(stk, 0);
-		b = pop(stk, 0);
-		push(stk, a + b);
+		a = pop(stk);
+		b = pop(stk);
+		push(stk, b + a);
 	}
 	else
 		invalid(6);
@@ -40,9 +40,9 @@ int _sub(stack_t *stack, unsigned int line_number)
 
 	if (g.stack_size >= 2)
 	{
-		a = pop(stk, 0);
-		b = pop(stk, 0);
-		push(stk, a - b);
+		a = pop(stk);
+		b = pop(stk);
+		push(stk, b - a);
 	}
 	else
 		invalid(6);
@@ -64,9 +64,9 @@ int _mul(stack_t *stack, unsigned int line_number)
 
 	if (g.stack_size >= 2)
 	{
-		a = pop(stk, 0);
-		b = pop(stk, 0);
-		push(stk, a * b);
+		a = pop(stk);
+		b = pop(stk);
+		push(stk, b * a);
 	}
 	else
 		invalid(6);
@@ -88,11 +88,11 @@ int _div(stack_t *stack, unsigned int line_number)
 
 	if (g.stack_size >= 2)
 	{
-		a = pop(stk, 0);
+		a = pop(stk);
 		if (a == 0)
 			invalid(7);
-		b = pop(stk, 0);
-		push(stk, a / b);
+		b = pop(stk);
+		push(stk, b / a);
 	}
 	else
 		invalid(6);
@@ -114,11 +114,11 @@ int _mod(stack_t *stack, unsigned int line_number)
 
 	if (g.stack_size >= 2)
 	{
-		a = pop(stk, 0);
+		a = pop(stk);
 		if (a == 0)
 			invalid(7);
-		b = pop(stk, 0);
-		push(stk, a % b);
+		b = pop(stk);
+		push(stk, b % a);
 	}
 	else
 		invalid(6);

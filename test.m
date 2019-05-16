@@ -1,7 +1,6 @@
-push 4
+push 9
 push 5
-add
+mod
+pint
+push 1
 pall
-push 5
-push 3
-sub

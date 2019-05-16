@@ -4,7 +4,6 @@
 
 /**
  * get_opcode - function to get the correct function
- * @str: string with the correct function name
  *
  * Return: not sure yet
  */

@@ -77,37 +77,19 @@ int pint(stack_t *stack, unsigned int line_number)
 /**
  * pop - removes top of stack and returns value
  * @stack: top of stack
- * @index: should always be 0
  *
  * Return: value that was popped
  */
-int pop(stack_t **stack, unsigned int index)
+int pop(stack_t **stack)
 {
-	stack_t *seek = *stack, *sp, *sn;
+	stack_t *seek;
 	int value = 0;
 
 	if (stack == NULL || *stack == NULL)
 		invalid(8);
-	for (; index && seek->next; seek = seek->next, index--)
-		;
-	if (index)
-		return (-1);
-	sp = seek->prev;
-	sn = seek->next;
-	if (sp && sn)
-	{
-		sp->next = sn;
-		sn->prev = sp;
-	}
-	else if (!sp && sn)
-	{
-		sn->prev = NULL;
-		*stack = sn;
-	}
-	else if (sp && !sn)
-		sp->next = NULL;
-	else
-		*stack = NULL;
+	seek = *stack;
+	g.head = seek->next;
+	*stack = seek->next;
 	value = seek->n;
 	g.stack_size--;
 	free(seek);

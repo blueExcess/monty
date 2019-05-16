@@ -41,9 +41,10 @@ int main(int ac, char **av)
 		if (strcmp(comm, "push") == 0)
 			push(&stack, value);
 		else if (strcmp(comm, "pop") == 0)
-			pop(&stack, 0);
+			pop(&stack);
 		else
 			get_opcode();
+		stack = g.head;
 		free(line);
 		line = NULL;
 	}
