@@ -90,7 +90,7 @@ int pstr(stack_t *stack, unsigned int line_number)
 		if (a < 0 || a > 127)
 		{
 			current = current->next;
-			continue;
+			break;
 		}
 		printf("%c", a);
 		current = current->next;
