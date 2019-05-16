@@ -1,153 +1,126 @@
 /* new functions to be merged into opstuff files for fun and profit */
+#include "monty.h"
 
 /**
- * add - add top two of stack together and return result
+ * _add - add top two of stack together and return result
  * @stack: top of stack
  * @line_number: wish this was a shorter var name
  *
  * Return: prints result - 0 on success, 1 on fail
  */
-int add(stack_t *stack, unsigned int line_number)
+int _add(stack_t *stack, unsigned int line_number)
 {
 	int a = 0, b = 0;
-	unsigned int ln = line_number;
+	stack_t **stk = &stack;
+	(void)line_number;
 
-	if (g.stack_size > 2)
+	if (g.stack_size >= 2)
 	{
-		a = pop(stack, line_number);
-		b = pop(stack, line_number);
-		push(stack, a + b);
-		printf("%d\n", a + b); /* maybe print from stack directly? */
+		a = pop(stk);
+		b = pop(stk);
+		push(stk, b + a);
 	}
 	else
-	{
-		fprintf(stderr, "L%d: can't add, stack too short\n", ln);
-		/* free all stuff or call error handling func? */
-		exit(EXIT_FAILURE);
-	}
+		invalid(6);
 	return (0);
 }
 
 /**
- * sub - subtract top two of stack together and return result
+ * _sub - subtract top two of stack together and return result
  * @stack: top of stack
  * @line_number: wish this was a shorter var name
  *
  * Return: prints result - 0 on success, 1 on fail
  */
-int sub(stack_t *stack, unsigned int line_number)
+int _sub(stack_t *stack, unsigned int line_number)
 {
 	int a = 0, b = 0;
-	unsigned int ln = line_number;
+	stack_t **stk = &stack;
+	(void)line_number;
 
-	if (g.stack_size > 2)
+	if (g.stack_size >= 2)
 	{
-		a = pop(stack, line_number);
-		b = pop(stack, line_number);
-		push(stack, a - b);
-		printf("%d\n", a - b); /* maybe print from stack directly? */
+		a = pop(stk);
+		b = pop(stk);
+		push(stk, b - a);
 	}
 	else
-	{
-		fprintf(stderr, "L%d: can't sub, stack too short\n", ln);
-		/* free all stuff or call error handling func? */
-		exit(EXIT_FAILURE);
-	}
+		invalid(6);
 	return (0);
 }
 
 /**
- * mul - multiply top two of stack together and return result
+ * _mul - multiply top two of stack together and return result
  * @stack: top of stack
  * @line_number: wish this was a shorter var name
  *
  * Return: prints result - 0 on success, 1 on fail
  */
-int mul(stack_t *stack, unsigned int line_number)
+int _mul(stack_t *stack, unsigned int line_number)
 {
 	int a = 0, b = 0;
-	unsigned int ln = line_number;
+	stack_t **stk = &stack;
+	(void)line_number;
 
-	if (g.stack_size > 2)
+	if (g.stack_size >= 2)
 	{
-		a = pop(stack, line_number);
-		b = pop(stack, line_number);
-		push(stack, a * b);
-		printf("%d\n", a * b); /* maybe print from stack directly? */
+		a = pop(stk);
+		b = pop(stk);
+		push(stk, b * a);
 	}
 	else
-	{
-		fprintf(stderr, "L%d: can't mul, stack too short\n", ln);
-		/* free all stuff or call error handling func? */
-		exit(EXIT_FAILURE);
-	}
+		invalid(6);
 	return (0);
 }
 
 /**
- * div - divide top two of stack together and return result
+ * _div - divide top two of stack together and return result
  * @stack: top of stack
  * @line_number: wish this was a shorter var name
  *
  * Return: prints result - 0 on success, 1 on fail
  */
-int div(stack_t *stack, unsigned int line_number)
+int _div(stack_t *stack, unsigned int line_number)
 {
 	int a = 0, b = 0;
-	unsigned int ln = line_number;
+	stack_t **stk = &stack;
+	(void)line_number;
 
-	if (g.stack_size > 2)
+	if (g.stack_size >= 2)
 	{
-		a = pop(stack, line_number);
+		a = pop(stk);
 		if (a == 0)
-		{
-			fprintf(stderr, "L%d: division by zero\n", ln);
-			/* free stuff */
-			exit(EXIT_FAILURE);
-		}
-		b = pop(stack, line_number);
-		push(stack, a / b);
-		printf("%d\n", a / b); /* maybe print from stack directly? */
+			invalid(7);
+		b = pop(stk);
+		push(stk, b / a);
 	}
 	else
-	{
-		fprintf(stderr, "L%d: can't div, stack too short\n", ln);
-		/* free all stuff or call error handling func? */
-		exit(EXIT_FAILURE);
-	}
+		invalid(6);
 	return (0);
 }
 
 /**
- * mod - modulo top two of stack together and return result
+ * _mod - modulo top two of stack together and return result
  * @stack: top of stack
  * @line_number: wish this was a shorter var name
  *
  * Return: prints result - 0 on success, 1 on fail
  */
-int mod(stack_t *stack, unsigned int line_number)
+int _mod(stack_t *stack, unsigned int line_number)
 {
 	int a = 0, b = 0;
-	unsigned int ln = line_number;
+	stack_t **stk = &stack;
+	(void)line_number;
 
-	if (g.stack_size > 2)
+	if (g.stack_size >= 2)
 	{
-		a = pop(stack, line_number);
+		a = pop(stk);
 		if (a == 0)
-		{
-			fprintf(stderr, "L%d: division by zero\n", ln);
-			/* free stuff */
-			exit(EXIT_FAILURE);
-		}
-		b = pop(stack, line_number);
-		push(stack, a % b);
-		printf("%d\n", a % b); /* maybe print from stack directly? */
+			invalid(7);
+		b = pop(stk);
+		push(stk, b % a);
 	}
 	else
-	{
-		fprintf(stderr, "L%d: can't mod, stack too short\n", ln);
-		/* free all stuff or call error handling func? */
-		exit(EXIT_FAILURE);
-	}
+		invalid(6);
 	return (0);
 }

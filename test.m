@@ -1,5 +1,6 @@
-push
-fun 4
-push push
-
-push 3
+push 9
+push 5
+mod
+pint
+push 1
+pall

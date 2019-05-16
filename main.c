@@ -40,8 +40,11 @@ int main(int ac, char **av)
 		}
 		if (strcmp(comm, "push") == 0)
 			push(&stack, value);
+		else if (strcmp(comm, "pop") == 0)
+			pop(&stack);
 		else
 			get_opcode();
+		stack = g.head;
 		free(line);
 		line = NULL;
 	}
@@ -93,6 +96,16 @@ int invalid(int n)
 	case 5:
 		fprintf(stderr, "L%d: can't pint, stack empty\n", g.line_num);
 		break;
+	case 6:
+		fprintf(stderr, "L%d: can't %s, stack too short\n", g.line_num, g.command);
+		break;
+	case 7:
+		fprintf(stderr, "L%d: division by zero\n", g.line_num);
+		break;
+	case 8:
+		fprintf(stderr, "L%d: can't pop an empty stack\n", g.line_num);
+		break;
+
 	}
 	free_stack(g.head);
 	free(g.line);

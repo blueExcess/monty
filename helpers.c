@@ -4,7 +4,6 @@
 
 /**
  * get_opcode - function to get the correct function
- * @str: string with the correct function name
  *
  * Return: not sure yet
  */
@@ -13,11 +12,11 @@ void get_opcode(void)
 	int i = 0;
 
 	good_t commands[] = {
-		{"pall", pall}, {"pint", pint}, {"\0", NULL}/*, {"swap", swap},
-		{"add", add}, {"nop", nop}, {"sub", sub},
-		{"div", div}, {"mul", mul}, {"mod", mod},
-		{"pchar", pchar}, {"pstr", pstr}, {"rotl", rotl},
-		{"rotr", rotr}*/
+		{"pall", pall}, {"pint", pint}, /* {"swap", swap}, */
+		{"add", _add}, /* {"nop", nop}, */ {"sub", _sub},
+		{"div", _div}, {"mul", _mul}, {"mod", _mod},
+		/* {"pchar", pchar}, {"pstr", pstr}, {"rotl", rotl},
+		{"rotr", rotr}, */ {NULL, NULL}
 	};
 	while (commands[i].f != NULL)
 	{

@@ -73,3 +73,25 @@ int pint(stack_t *stack, unsigned int line_number)
 	printf("%i\n", stack->n);
 	return (0);
 }
+
+/**
+ * pop - removes top of stack and returns value
+ * @stack: top of stack
+ *
+ * Return: value that was popped
+ */
+int pop(stack_t **stack)
+{
+	stack_t *seek;
+	int value = 0;
+
+	if (stack == NULL || *stack == NULL)
+		invalid(8);
+	seek = *stack;
+	g.head = seek->next;
+	*stack = seek->next;
+	value = seek->n;
+	g.stack_size--;
+	free(seek);
+	return (value);
+}
