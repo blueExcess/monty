@@ -64,3 +64,37 @@ int pchar(stack_t *stack, unsigned int line_number)
 	printf("%c\n", a);
 	return (0);
 }
+
+/**
+ * pstr - prints the string starting at the top of the stack
+ * @stack: top of stack
+ * @line_number: unused
+ *
+ * Return: 0 on success
+ */
+int pstr(stack_t *stack, unsigned int line_number)
+{
+	int a;
+	stack_t *current;
+	(void)line_number;
+
+	if (g.stack_size == 0)
+	{
+		printf("\n");
+		return (0);
+	}
+	current = stack;
+	while (current != NULL && current->n != 0)
+	{
+		a = current->n;
+		if (a < 0 || a > 127)
+		{
+			current = current->next;
+			continue;
+		}
+		printf("%c", a);
+		current = current->next;
+	}
+	printf("\n");
+	return (1);
+}

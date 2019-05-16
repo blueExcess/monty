@@ -103,6 +103,7 @@ int swap(stack_t *stack, unsigned int line_number);
 int nop(stack_t *stack, unsigned int line_number);
 int _comment(char *str);
 int pchar(stack_t *stack, unsigned int line_number);
+int pstr(stack_t *stack, unsigned int line_number);
 
 /* maths.c */
 int _add(stack_t *stack, unsigned int line_number);
