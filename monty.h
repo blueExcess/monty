@@ -68,14 +68,20 @@ struct g
 
 
 /* PROTOTYPES */
+/* main.c */
 int no_mem_invalid(char *line, int n);
 int invalid(int n);
+
+/* helpers.c */
 void get_opcode(void);
+void free_stack(stack_t *stack);
+
+/* ops1.c */
 stack_t *push(stack_t **stack, int n);
 int pall(stack_t *stack, unsigned int line_number);
-void free_stack(stack_t *stack);
 int pint(stack_t *stack, unsigned int line_number);
 int pop(stack_t **stack);
+int swap(stack_t *stack, unsigned int line_number);
 
 /* maths.c */
 int _add(stack_t *stack, unsigned int line_number);
