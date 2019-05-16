@@ -24,16 +24,19 @@ int main(int ac, char **av)
 	file = fopen(av[1], "r");
 	if (!file)
 		invalid(count, av[1], 4);
+	g.file = file;
 	stack = NULL;
+	g.head = stack;
 	while ((read = getline(&line, &bsize, file)) != -1)
 	{
 		count++;
 		g.line_num = count;
 		scanned = sscanf(line, "%s %i", comm, &value);
 		g.command = comm;
+		g.line = line;
 		if (scanned != 2 && strcmp(comm, "push") == 0)
 		{
-			free_stack(stack);
+			free_stack(g.head);
 			free(line);
 			fclose(file);
 			invalid(count, line, 2);
@@ -45,7 +48,7 @@ int main(int ac, char **av)
 		free(line);
 		line = NULL;
 	}
-	free_stack(stack);
+	free_stack(g.head);
 	free(line);
 	fclose(file);
 	return (0);
@@ -65,6 +68,9 @@ int invalid(int count, char *line, int n)
 	{
 	case 1:
 		fprintf(stderr, "L%d: unknown instruction %s\n", count, line);
+		free_stack(g.head);
+		free(g.line);
+		fclose(g.file);
 		break;
 	case 2:
 		fprintf(stderr, "L%d: usage: push integer\n", count);
@@ -74,6 +80,11 @@ int invalid(int count, char *line, int n)
 		break;
 	case 4:
 		fprintf(stderr, "Error: Can't open file %s\n", line);
+		break;
+	case 5:
+		fprintf(stderr, "L%d: can't pint, stack empty", g.line_num);
+		free(g.line);
+		fclose(g.file);
 		break;
 	}
 	exit(EXIT_FAILURE);
