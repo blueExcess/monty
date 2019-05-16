@@ -100,6 +100,12 @@ int invalid(int n)
 	case 8:
 		fprintf(stderr, "L%d: can't pop an empty stack\n", g.line_num);
 		break;
+	case 9:
+		fprintf(stderr, "L%d: can't pchar, stack empty\n", g.line_num);
+		break;
+	case 10:
+		fprintf(stderr, "L%d: can't pchar, value out of range\n", g.line_num);
+		break;
 
 	}
 	free_stack(g.head);
