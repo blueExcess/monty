@@ -23,6 +23,8 @@ int main(int ac, char **av)
 	g.head = stack;
 	while ((read = getline(&line, &bsize, file)) != -1)
 	{
+		if (_comment(line) == 1)
+			goto end;
 		g.line_num++;
 		memset(comm, 0, 64);
 		scanned = sscanf(line, "%s %i%1c", comm, &value, &c);
