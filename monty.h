@@ -60,6 +60,8 @@ struct g
 	int stack_size;
 	int line_num;
 	char *command;
+	char *line;
+	FILE *file;
 } g;
 
 /* PROTOTYPES */
