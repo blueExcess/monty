@@ -25,7 +25,7 @@ int nop(stack_t *stack, unsigned int line_number)
  */
 int _comment(char *str)
 {
-	int i;
+	int i = 0;
 
 	while (str[i] != '\0')
 	{
