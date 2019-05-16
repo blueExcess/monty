@@ -95,3 +95,25 @@ int pop(stack_t **stack)
 	free(seek);
 	return (value);
 }
+
+/**
+ * swap - switch top two elements of stack
+ * @stack: top of stack
+ * @line_number: unused
+ *
+ * Return: 0 on success
+ */
+int swap(stack_t *stack, unsigned int line_number)
+{
+	int a, b;
+	stack_t **stk = &stack;
+	(void)line_number;
+
+	if (g.stack_size < 2)
+		invalid(6);
+	a = pop(stk);
+	b = pop(stk);
+	push(stk, a);
+	push(stk, b);
+	return (0);
+}
