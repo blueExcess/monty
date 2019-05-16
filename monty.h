@@ -75,14 +75,14 @@ stack_t *push(stack_t **stack, int n);
 int pall(stack_t *stack, unsigned int line_number);
 void free_stack(stack_t *stack);
 int pint(stack_t *stack, unsigned int line_number);
-size_t pall(const stack_t *stack);
+int pop(stack_t **stack,  unsigned int index);
 
 /* maths.c */
-int add(stack_t *stack, unsigned int line_number);
-int sub(stack_t *stack, unsigned int line_number);
-int mul(stack_t *stack, unsigned int line_number);
-int div(stack_t *stack, unsigned int line_number);
-int mod(stack_t *stack, unsigned int line_number);
+int _add(stack_t *stack, unsigned int line_number);
+int _sub(stack_t *stack, unsigned int line_number);
+int _mul(stack_t *stack, unsigned int line_number);
+int _div(stack_t *stack, unsigned int line_number);
+int _mod(stack_t *stack, unsigned int line_number);
 
 
 
