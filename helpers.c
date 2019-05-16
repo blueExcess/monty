@@ -28,7 +28,7 @@ void get_opcode(void)
 		}
 		i++;
 	}
-	invalid(g.line_num, g.command, 1);
+	invalid(1);
 }
 
 /**

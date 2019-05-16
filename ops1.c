@@ -67,7 +67,7 @@ int pint(stack_t *stack, unsigned int line_number)
 	(void)line_number;
 	if (stack == NULL || g.stack_size == 0)
 	{
-		invalid(g.line_num, g.command, 5);
+		invalid(5);
 		return (-1);
 	}
 	printf("%i\n", stack->n);
