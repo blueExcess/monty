@@ -39,7 +39,6 @@ typedef struct instruction_s
 } instruction_t;
 
 
-
 /* PROTOTYPES */
 int invalid(int count, char *line, int n);
 
@@ -47,7 +46,12 @@ stack_t *push(stack_t **stack, int n);
 size_t pall(const stack_t *stack);
 
 
-
+/* MATHS.C */
+int add(stack_t *stack, unsigned int line_number);
+int sub(stack_t *stack, unsigned int line_number);
+int mul(stack_t *stack, unsigned int line_number);
+int div(stack_t *stack, unsigned int line_number);
+int mod(stack_t *stack, unsigned int line_number);
 
 
 
