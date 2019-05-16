@@ -52,6 +52,8 @@ typedef struct good_s
         int (*f)(stack_t *stack, unsigned int line_number);
 } good_t;
 
+
+
 struct g
 {
 	stack_t *head;
@@ -64,6 +66,7 @@ struct g
 	FILE *file;
 } g;
 
+
 /* PROTOTYPES */
 int invalid(int count, char *line, int n);
 void get_opcode(void);
@@ -71,6 +74,17 @@ stack_t *push(stack_t **stack, int n);
 int pall(stack_t *stack, unsigned int line_number);
 void free_stack(stack_t *stack);
 int pint(stack_t *stack, unsigned int line_number);
+size_t pall(const stack_t *stack);
+
+/* maths.c */
+int add(stack_t *stack, unsigned int line_number);
+int sub(stack_t *stack, unsigned int line_number);
+int mul(stack_t *stack, unsigned int line_number);
+int div(stack_t *stack, unsigned int line_number);
+int mod(stack_t *stack, unsigned int line_number);
+
+
+
 
 
 
