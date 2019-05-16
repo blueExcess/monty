@@ -25,10 +25,12 @@ int main(int ac, char **av)
 	{
 		g.line_num++;
 		memset(comm, 0, 64);
-		scanned = sscanf(line, "%s %i", comm, &value);
+		scanned = sscanf(line, "%s %i%1c", comm, &value, &c);
 		g.command = comm;
 		g.line = line;
-		if (scanned != 2 && strcmp(comm, "push") == 0)
+		if ((scanned == 1 || (scanned == 3 &&
+				      (c != '\n' && c != ' ' && c != '\t')))
+		    && strcmp(comm, "push") == 0)
 			invalid(2);
 		if (strcmp(comm, "\0") == 0)
 			goto end;
