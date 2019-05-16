@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <math.h>
 
 
@@ -82,6 +83,9 @@ int pall(stack_t *stack, unsigned int line_number);
 int pint(stack_t *stack, unsigned int line_number);
 int pop(stack_t **stack);
 int swap(stack_t *stack, unsigned int line_number);
+
+/* ops2.c */
+int nop(stack_t *stack, unsigned int line_number);
 
 /* maths.c */
 int _add(stack_t *stack, unsigned int line_number);

@@ -1,5 +1,4 @@
-#include <stdio.h>
-#include <string.h>
+/* core functions for monty interpreter */
 #include "monty.h"
 
 /**
@@ -13,7 +12,7 @@ void get_opcode(void)
 
 	good_t commands[] = {
 		{"pall", pall}, {"pint", pint}, {"swap", swap},
-		{"add", _add}, /* {"nop", nop}, */ {"sub", _sub},
+		{"add", _add}, {"nop", nop}, {"sub", _sub},
 		{"div", _div}, {"mul", _mul}, {"mod", _mod},
 		/* {"pchar", pchar}, {"pstr", pstr}, {"rotl", rotl},
 		{"rotr", rotr}, */ {NULL, NULL}
