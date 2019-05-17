@@ -105,6 +105,10 @@ int _comment(char *str);
 int pchar(stack_t *stack, unsigned int line_number);
 int pstr(stack_t *stack, unsigned int line_number);
 
+/* rotate.c */
+int rotl(stack_t *stack, unsigned int line_number);
+int rotr(stack_t *stack, unsigned int line_number);
+
 /* maths.c */
 int _add(stack_t *stack, unsigned int line_number);
 int _sub(stack_t *stack, unsigned int line_number);
