@@ -15,11 +15,7 @@ void get_opcode(void)
 		{"add", _add}, {"nop", nop}, {"sub", _sub},
 		{"div", _div}, {"mul", _mul}, {"mod", _mod},
 		{"pchar", pchar}, {"pstr", pstr},
-		/**
-		 *{"rotl", rotl},
-		 *{"rotr", rotr},
-		 */
-		{NULL, NULL}
+		{"rotl", rotl}, {"rotr", rotr}, {NULL, NULL}
 	};
 	while (commands[i].f != NULL)
 	{
