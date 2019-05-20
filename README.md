@@ -3,6 +3,8 @@
 ## Description
 Interpreter for the Monty opcodes. 
 
+Able to take opcodes like push, pall, pint etc and create a stack from them.
+
 What you should learn from this project:
 
 * What do LIFO and FIFO mean
