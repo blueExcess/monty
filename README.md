@@ -1,6 +1,8 @@
 # 0x18. C - Stacks, Queues - LIFO, FIFO
 
 ## Description
+Interpreter for the Monty opcodes. 
+
 What you should learn from this project:
 
 * What do LIFO and FIFO mean
